@@ -1,0 +1,75 @@
+package com.sample
+
+
+//list any import classes here.
+import java.util.Scanner
+import javax.swing.JOptionPane;
+import javax.swing.JFrame       
+global JFrame frame 
+global javax.swing.JTextArea textArea
+global javax.swing.JTextArea recomendacoes
+global javax.swing.JTextField textField
+
+
+import java.util.ArrayList
+import javax.swing.JOptionPane;
+dialect "mvel"
+
+function void doCheckout() {
+
+  Object[] options = {"Sim","Não"};
+      int n = JOptionPane.showConfirmDialog(
+            null,
+            "deseja comprar o produto recomendado?",
+            "recomendação",
+            JOptionPane.YES_NO_OPTION);
+
+if (n== JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "HELLO");
+            
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "GOODBYE");
+           
+        }        return;
+        }
+
+
+
+
+rule " Mostrar itens validos regra1"
+
+when
+
+i:Item()
+
+p:Pessoa(getSexo()==i.getGenero() || i.isSexos()==true)
+then
+recomendacoes.setText("Produtos interessantes para si");
+textArea.append(i.getNome()+"\n");
+
+end
+
+        
+rule "resposta"
+
+when i:Item()
+
+then 
+doCheckout();
+end
+
+rule " Mostrar itdf validos regra1"
+
+when
+
+i:Item()
+
+p:Pessoa(getSexo()==i.getGenero() || i.isSexos()==true)
+then
+recomendacoes.setText("Produtos interessantes para si");
+textArea.append("Javali!!!");
+
+end
+  
+
